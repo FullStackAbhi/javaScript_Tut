@@ -409,8 +409,10 @@ user = null;
 // Run GC
 // ↓
 // Clean Memory
-// What You Must Remember For Interviews
-// Garbage Collection
+// 
+
+
+//  >>>>>>>>>>>>>>>>>>>>>>>>>> Garbage Collection
 
 // Automatic memory cleanup performed by JavaScript.
 

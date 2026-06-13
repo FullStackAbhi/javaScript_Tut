@@ -1,3 +1,4 @@
+
 // JavaScript specials
 // This chapter briefly recaps the features of JavaScript that we’ve learned by now, paying special attention to subtle moments.
 
@@ -9,11 +10,13 @@ alert('Hello'); alert('World');
 
 alert('Hello')
 alert('World')
+
 // That’s called “automatic semicolon insertion”. Sometimes it doesn’t work, for instance:
 
 alert("There will be an error after this message")
 
 [1, 2].forEach(alert)
+
 // Most codestyle guides agree that we should put a semicolon after each statement.
 
 // Semicolons are not required after code blocks {...} and syntax constructs with them like loops:
@@ -32,18 +35,20 @@ for(;;) {
 // Strict mode
 // To fully enable all features of modern JavaScript, we should start scripts with "use strict".
 
-'use strict';
+// 'use strict';
+
 
 // ...
 // The directive must be at the top of a script or at the beginning of a function body.
 
-// Without "use strict", everything still works, but some features behave in the old-fashioned, “compatible” way. We’d generally prefer the modern behavior.
+// Without "use strict", everything still works, but some features behave in the old-fashioned, “compatible” way. 
+// We’d generally prefer the modern behavior.
 
 // Some modern features of the language (like classes that we’ll study in the future) enable strict mode implicitly.
 
 // More in: The modern mode, "use strict".
 
-// Variables
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> **Variables** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Can be declared using:
 
 // let
@@ -58,6 +63,8 @@ for(;;) {
 
 let x = 5;
 x = "John";
+// typeof()
+
 // There are 8 data types:
 
 // number for both floating-point and integer numbers,
@@ -66,6 +73,7 @@ x = "John";
 // boolean for logical values: true/false,
 // null – a type with a single value null, meaning “empty” or “does not exist”,
 // undefined – a type with a single value undefined, meaning “not assigned”,
+
 // object and symbol – for complex data structures and unique identifiers, we haven’t learnt them yet.
 // The typeof operator returns the type for a value, with two exceptions:
 
@@ -73,16 +81,16 @@ x = "John";
 // typeof function(){} == "function" // functions are treated specially
 // More in: Variables and Data types.
 
-// Interaction
+//  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ** Interaction ** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // We’re using a browser as a working environment, so basic UI functions will be:
 
-// prompt(question, [default])
+// (question, [default])
 // Ask a question, and return either what the visitor entered or null if they clicked “cancel”.
 // confirm(question)
 // Ask a question and suggest to choose between Ok and Cancel. The choice is returned as true/false.
 // alert(message)
 // Output a message.
-// All these functions are modal, they pause the code execution and prevent the visitor from interacting with the page until they answer.
+// All these funpromptctions are modal, they pause the code execution and prevent the visitor from interacting with the page until they answer.
 
 // For instance:
 
@@ -93,7 +101,7 @@ alert( "Visitor: " + userName ); // Alice
 alert( "Tea wanted: " + isTeaWanted ); // true
 // More in: Interaction: alert, prompt, confirm.
 
-// Operators
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ** Operators ** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // JavaScript supports the following operators:
 
 // Arithmetical
@@ -103,26 +111,191 @@ alert( "Tea wanted: " + isTeaWanted ); // true
 
 alert( '1' + 2 ); 
 alert( 1 + '2' ); 
+
 // Assignments
 // There is a simple assignment: a = b and combined ones like a *= 2.
 
 // Bitwise
-// Bitwise operators work with 32-bit integers at the lowest, bit-level: see the docs when they are needed.
+// Bitwise operators work with 32-bit integers at the lowest, bit-level: 
+// Operator	                       Usage	       Description
+// Bitwise AND                      a & b	     Returns a one in each bit position for which the corresponding bits of both operands are ones.
+// Bitwise  OR                      a | b	     Returns a zero in each bit position for which the corresponding bits of both operands are zeros.
+// Bitwise  XOR                     a ^ b	     Returns a zero in each bit position for which the corresponding bits are the same. [Returns a one in each bit position for which the corresponding bits are different.]
+// Bitwise  NOT                      ~ a	       Inverts the bits of its operand.
+// Left shift	                      a << b	       Shifts a in binary representation b bits to the left, shifting in zeros from the right.
+// Sign-propagating right shift	    a >> b	       Shifts a in binary representation b bits to the right, discarding bits shifted off.
+// Zero-fill right shift	          a >>> b	       Shifts a in binary representation b bits to the right, discarding bits shifted off, and shifting in zeros from the left.
+
+
+
+// Step 3: Bitwise AND (&)
+
+// Rule:
+
+// 1 & 1 = 1
+// 1 & 0 = 0
+// 0 & 1 = 0
+// 0 & 0 = 0
+
+// Example:
+
+// 5 & 3
+
+// Binary:
+
+// 5 = 101
+// 3 = 011
+// ---------
+//     001
+
+// Result:
+
+// 1
+// console.log(5 & 3); // 1
+// Easy Analogy
+
+// AND means:
+
+// Both must be YES
+
+
+// Step 4: Bitwise OR (|)
+
+// Rule:
+
+// 1 | 1 = 1
+// 1 | 0 = 1
+// 0 | 1 = 1
+// 0 | 0 = 0
+
+// Example:
+
+// 5 | 3
+// 5 = 101
+// 3 = 011
+// ---------
+//     111
+// 111 = 7
+// console.log(5 | 3); // 7
+// Easy Analogy
+
+// OR means:
+
+// At least one YES
+
+
+// Step 5: XOR (^)
+
+// Rule:
+
+// 1 ^ 1 = 0
+// 0 ^ 0 = 0
+// 1 ^ 0 = 1
+// 0 ^ 1 = 1
+
+// Same → 0
+
+// Different → 1
+
+// Example:
+
+// 5 ^ 3
+// 5 = 101
+// 3 = 011
+// ---------
+//     110
+// 110 = 6
+// console.log(5 ^ 3); // 6
+// Shortcut
+
+
+// Same bits -> 0
+// Different bits -> 1
+
+// Step 6: NOT (~)
+
+
+// Rule:
+
+// 0 -> 1
+// 1 -> 0
+
+// Example:
+
+// ~5
+
+// Result:
+
+// console.log(~5); // -6 
+
+// ~n = -(n+1)
+
+// Examples:
+
+// ~5   // -6
+// ~10  // -11
+// ~20  // -21
+
+
+// Step 7: Left Shift (<<)
+
+// Moves bits left.
+
+// Example:
+
+// 5 << 1
+
+// Binary:
+
+// 5 = 101
+
+// 1010
+// 10
+
+// console.log(5 << 1); // 10
+// Shortcut
+// n << 1 = n × 2
+// n << 2 = n × 4
+// n << 3 = n × 8
+
+// Examples:
+
+// 5 << 1 // 10
+// 5 << 2 // 20
+// Step 8: Right Shift (>>)
+
+// Moves bits right.
+
+// 8 >> 1
+// 8 = 1000
+
+// 100
+// 4
+// console.log(8 >> 1); // 4
+// Shortcut
+// n >> 1 = n / 2
+// n >> 2 = n / 4
+// n >> 3 = n / 8
+
 
 // Conditional
 // The only operator with three parameters: cond ? resultA : resultB. If cond is truthy, returns resultA, otherwise resultB.
 
 // Logical operators
-// Logical AND && and OR || perform short-circuit evaluation and then return the value where it stopped (not necessary true/false). Logical NOT ! converts the operand to boolean type and returns the inverse value.
+// Logical AND && and OR || perform short-circuit evaluation and then return the value where 
+// it stopped (not necessary true/false). Logical NOT ! converts the operand to boolean type and returns the inverse value.
 
 // Nullish coalescing operator
-// The ?? operator provides a way to choose a defined value from a list of variables. The result of a ?? b is a unless it’s null/undefined, then b.
+// The ?? operator provides a way to choose a defined value from a list of variables. 
+// The result of a ?? b is a unless it’s null/undefined, then b.
 
 // Comparisons
-// Equality check == for values of different types converts them to a number (except null and undefined that equal each other and nothing else), so these are equal:
+// Equality check == for values of different types converts them to a number 
+// (except null and undefined that equal each other and nothing else), so these are equal:
 
-alert( 0 == false ); // true
-alert( 0 == '' ); // true
+alert( 0 == false ); //
+alert( 0 == '' ); // 
+
 // Other comparisons convert to a number as well.
 
 // The strict equality operator === doesn’t do the conversion: different types always mean different values for it.
@@ -131,10 +304,6 @@ alert( 0 == '' ); // true
 
 // Greater/less comparisons compare strings character-by-character, other types are converted to a number.
 
-// Other operators
-// There are few others, like a comma operator.
-
-// More in: Basic operators, maths, Comparisons, Logical operators, Nullish coalescing operator '??'.
 
 // Loops
 // We covered 3 types of loops:
@@ -182,6 +351,8 @@ switch (age) {
 }
 // Details in: The "switch" statement.
 
+
+
 // Functions
 // We covered three ways to create a function in JavaScript:
 
@@ -199,29 +370,36 @@ let sum = function(a, b) {
 
   return result;
 };
+
+
 // Arrow functions:
 
 // // expression on the right side
-// let sum = (a, b) => a + b;
+let sum = (a, b) => a + b;
 
 // // or multi-line syntax with { ... }, need return here:
-// let sum = (a, b) => {
-//   // ...
-//   return a + b;
-// }
+let sum = (a, b) => {
+  // ...
+  return a + b;
+}
+
 
 // // without arguments
-// let sayHi = () => alert("Hello");
+let sayHi = () => alert("Hello");
 
 // // with a single argument
-// let double = n => n * 2;
-// Functions may have local variables: those declared inside its body or its parameter list. Such variables are only visible inside the function.
+let double = n => n * 2;
+
+// Functions may have local variables: those declared inside its body or its parameter list.
+//  Such variables are only visible inside the function.
+
 // Parameters can have default values: function sum(a = 1, b = 2) {...}.
-// Functions always return something. If there’s no return statement, then the result is undefined.
+// Functions always return something. If there’s no return statement, then the result is _____________.
 // Details: see Functions, Arrow functions, the basics.
 
 // More to come
-// That was a brief list of JavaScript features. As of now we’ve studied only basics. Further in the tutorial you’ll find more specials and advanced features of JavaScript.
+// That was a brief list of JavaScript features. 
+// As of now we’ve studied only basics. Further in the tutorial you’ll find more specials and advanced features of JavaScript.
 
 
 
@@ -240,7 +418,7 @@ x = 10; // Error
 
 
 // 2. Truthy and Falsy Values
-if ("Hello") {
+if (" hejdjj") {
     console.log("Runs");
 }
 
@@ -264,11 +442,18 @@ if (0) {
 
 // Everything else is truthy.
 
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Important >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
 // 3. Rest and Spread Operator (Basics)
 const arr1 = [1, 2];
+
 const arr2 = [...arr1, 3, 4];
 
-// console.log(arr2);
+// console.log(arr2);//1 , 2 , 3 ,4
 
 // Output:
 
@@ -284,24 +469,31 @@ sum(1, 2, 3);
 
 // This becomes very important later for React and Node.js.
 
+
 // 4. Destructuring (Basic)
+
+
+
 
 // Array:
 
 const arr = [10, 20];
 
+
 const [a, b] = arr;
 
-console.log(a, b);
+console.log(a, b);//10 , 20
 
 // Object:
 
 const user = {
     name: "Abhishek",
-    age: 20
+    age: 20,
+    add : "delhi"
 };
 
-const { name, age } = user;
+
+const { name, age , city } = user;
 
 console.log(name);
 

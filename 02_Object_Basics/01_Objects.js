@@ -1,16 +1,37 @@
 // Objects
-// As we know from the chapter Data types, there are eight data types in JavaScript. Seven of them are called “primitive”, because their values contain only a single thing (be it a string or a number or whatever).
 
-// In contrast, objects are used to store keyed collections of various data and more complex entities. In JavaScript, objects penetrate almost every aspect of the language. So we must understand them first before going in-depth anywhere else.
 
-// An object can be created with curly braces {…} with an optional list of properties. A property is a “key: value” pair, where key is a string (also called a “property name”), and value can be anything.
+// As we know from the chapter Data types, there are eight data types in JavaScript. Seven of them are called “primitive”, 
+// because their values contain only a single thing (be it a string or a number or whatever).
 
-// We can imagine an object as a cabinet with signed files. Every piece of data is stored in its file by the key. It’s easy to find a file by its name or add/remove a file.
+// In contrast, objects are used to store keyed collections of various data and more complex entities.
+//  In JavaScript, objects penetrate almost every aspect of the language. So we must understand them first before going
+//  in-depth anywhere else.
+
+
+// An object can be created with curly braces {…} with an optional list of properties. A property is a “key: value” pair
+// , where key is a string (also called a “property name”), and value can be anything.
+
+// We can imagine an object as a cabinet with signed files. Every piece of data is stored in its file by the key. 
+// It’s easy to find a file by its name or add/remove a file.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // An empty object (“empty cabinet”) can be created using one of two syntaxes:
 
 let user = new Object(); // "object constructor" syntax
+
 let user = {};  // "object literal" syntax
 
 // Usually, the curly braces {...} are used. That declaration is called an object literal.
@@ -20,7 +41,9 @@ let user = {};  // "object literal" syntax
 
 let user = {     // an object
   name: "John",  // by key "name" store value "John"
-  age: 30        // by key "age" store value 30
+  age: 30 ,
+  "first  name" : "divya",   
+     // by key "age" store value 30
 };
 // A property has a key (also known as “name” or “identifier”) before the colon ":" and a value to the right of it.
 
@@ -36,15 +59,20 @@ let user = {     // an object
 // Property values are accessible using the dot notation:
 
 // // get property values of the object:
+
+
 alert( user.name ); // John
 alert( user.age ); // 30
+
+// alert(user.)
+
 // The value can be of any type. Let’s add a boolean one:
 
 // user.isAdmin = true;
 
 // To remove a property, we can use the delete operator:
 
-// delete user.age;
+delete user.name;
 
 // We can also use multiword property names, but then they must be quoted:
 
@@ -83,14 +111,24 @@ alert(user["likes birds"]); // true
 
 // // delete
 delete user["likes birds"];
-// Now everything is fine. Please note that the string inside the brackets is properly quoted (any type of quotes will do).
+// Now everything is fine. Please note that the string inside the brackets
+//  is properly quoted (any type of quotes will do).
 
-// Square brackets also provide a way to obtain the property name as the result of any expression – as opposed to a literal string – like from a variable as follows:
+// Square brackets also provide a way to obtain the property name as the result of any expression
+//  – as opposed to a literal string – like from a variable as follows:
 
-let key = "likes birds";
+let name = "likes birds";
 
 // // same as user["likes birds"] = true;
-user[key] = true;
+let user = {}
+
+user[name] = true;
+
+user = {
+  
+}
+
+
 // Here, the variable key may be calculated at run-time or depend on the user input. 
 // And then we use it to access the property. That gives us a great deal of flexibility.
 
@@ -104,8 +142,8 @@ let user = {
 let key = prompt("What do you want to know about the user?", "name");
 
 // // access by variable
-alert( user[key] ); // John (if enter "name")
-// The dot notation cannot be used in a similar way:
+alert(  ); // John (if enter "name")
+// The dot notatiuser[key]on cannot be used in a similar way:
 
 let user = {
   name: "John",
@@ -125,7 +163,7 @@ let bag = {
   [fruit]: 5, // the name of the property is taken from the variable fruit
 };
 
-// alert( bag.apple ); // 5 if fruit="apple"
+alert( bag ); // 5 if fruit="apple"
 // The meaning of a computed property is simple: [fruit] means that the property name should be taken from fruit.
 
 // So, if a visitor enters "apple", bag will become {apple: 5}.
@@ -142,12 +180,16 @@ let bag = {
 // We can use more complex expressions inside square brackets:
 
 let fruit = 'apple';
+
+
 let bag = {
   [fruit + 'Computers']: 5 // bag.appleComputers = 5
 };
-// Square brackets are much more powerful than dot notation. They allow any property names and variables. But they are also more cumbersome to write.
+// Square brackets are much more powerful than dot notation.
+//  They allow any property names and variables. But they are also more cumbersome to write.
 
-// So most of the time, when property names are known and simple, the dot is used. And if we need something more complex, then we switch to square brackets.
+// So most of the time, when property names are known and simple, the dot is used.
+//  And if we need something more complex, then we switch to square brackets.
 
 // Property value shorthand
 // In real code, we often use existing variables as values for property names.
@@ -182,7 +224,8 @@ let user = {
   age: 30
 };
 // Property names limitations
-// As we already know, a variable cannot have a name equal to one of the language-reserved words like “for”, “let”, “return” etc.
+// As we already know, a variable cannot have a name equal to one of the language-reserved words
+//  like “for”, “let”, “return” etc.
 
 // But for an object property, there’s no such restriction:
 
@@ -193,21 +236,29 @@ let obj = {
   return: 3
 };
 
-// alert( obj.for + obj.let + obj.return );  // 6
-// In short, there are no limitations on property names. They can be any strings or symbols (a special type for identifiers, to be covered later).
+alert( obj.for + obj.let + obj.return );  // 6
+// In short, there are no limitations on property names.
+//  They can be any strings or symbols (a special type for identifiers, to be covered later).
 
 // Other types are automatically converted to strings.
 
 // For instance, a number 0 becomes a string "0" when used as a property key:
 
-// let obj = {
-//   0: "test" // same as "0": "test"
-// };
+let obj = {
+  name: "test" // same as "name": "test"
+};
 
 // // both alerts access the same property (the number 0 is converted to string "0")
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 alert( obj["0"] ); // test
-alert( obj[0] ); // test (same property)
-// There’s a minor gotcha with a special property named __proto__. We can’t set it to a non-object value:
+alert( obj["name"] ); // test (same property)
+// There’s a minor gotcha with a special property named __proto__.
+//  We can’t set it to a non-object value:
 
 // let obj = {};
 // obj.__proto__ = 5; // assign a number
@@ -265,6 +316,11 @@ alert( key in user ); // true, property "age" exists
 
 // The syntax:
 
+
+
+
+
+
 for (key in object) {
   // executes the body for each key among object properties
 }
@@ -287,14 +343,16 @@ for (let key in user) {
 // Also, we could use another variable name here instead of key. For instance, "for (let prop in obj)" is also widely used.
 
 // Ordered like an object
-// Are objects ordered? In other words, if we loop over an object, do we get all properties in the same order they were added? Can we rely on this?
+// Are objects ordered? In other words, if we loop over an object, do we get all properties in 
+// the same order they were added? Can we rely on this?
 
-// The short answer is: “ordered in a special fashion”: integer properties are sorted, others appear in creation order. The details follow.
+// The short answer is: “ordered in a special fashion”: integer properties are sorted,
+//  others appear in creation order. The details follow.
 
 // As an example, let’s consider an object with the phone codes:
 
 let codes = {
-  "49": "Germany",
+  "edehkjd": "Germany",
   "41": "Switzerland",
   "44": "Great Britain",
   // ..,

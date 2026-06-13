@@ -1,4 +1,6 @@
 // JavaScript Scope & Hoisting - Complete Notes
+
+
 // 1. What is Scope?
 
 // Scope determines where a variable can be accessed in a program.
@@ -11,21 +13,24 @@
 // Function Scope
 // Block Scope
 
-// 2. Global Scope
+
+
+
+//  Global Scope
 
 // A variable declared outside any function or block is globally scoped.
 
-let name = "Abhishek";
+let name = "Divya";//
 
 function greet() {
     console.log(name);
 }
 
 // greet();
-// console.log(name);
+console.log(name);
 // Output
-// Abhishek
-// Abhishek
+// Divya
+// Divya
 // Why?
 
 // name is available everywhere because it is declared globally.
@@ -64,32 +69,35 @@ employee2();
 // Variables declared inside a function can only be used inside that function.
 
 function test() {
-    let age = 20;
-    console.log(age);
+    let age = 20;//
+    console.log(age);//20
 }
 
 test();
 
-console.log(age);
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(age);//
 
 
 // Output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 20
 // ReferenceError: age is not defined
 // Example
+
+
 function calculate() {
     let result = 100;
     console.log(result);
@@ -144,7 +152,7 @@ console.log(result);
     let city = "Delhi";
 }
 
-console.log(city);
+console.log(city);//
 
 
 
@@ -153,12 +161,12 @@ console.log(city);
 
 // ReferenceError
 // Example with if
-// if(true){
-//     let score = 95;
-//     console.log(score);
-// }
+if(true){
+    var score = 95;
+    console.log(score);//
+}
 
-// console.log(score);
+console.log(score);
 
 // Output:
 
@@ -167,7 +175,7 @@ console.log(city);
 
 
 // Scope Visualization
-// let a = 10; // Global
+let a = 10; // Global
 
 function test() {
     let b = 20; // Function Scope
@@ -211,12 +219,12 @@ test();
 
 // This is one of the most asked interview topics.
 
-// Feature	    var	let	const
-// Re-declare	✅	❌	❌
-// Re-assign	✅	✅	❌
-// Block Scope	❌	✅	✅
-// Hoisted	    ✅.  ✅   ✅
-// TDZ	        ❌	✅	✅
+// Feature	        var	           let	      const
+// Re-declare	    ✅	           ❌	      ❌
+// Re-assign	    ✅	           ✅	      ❌
+// Block Scope	    ❌	           ✅	      ✅
+// Hoisted	        ✅              ✅          ✅
+// TDZ	            ❌	           ✅	      ✅
 
 
 
@@ -279,11 +287,12 @@ console.log(x);
 
 // This is one reason why var is considered unsafe.
 
+
 // let
 // Redeclaration Not Allowed
 let age = 20;
 
-// let age = 30;
+let age = 30;
 
 
 
@@ -375,17 +384,18 @@ console.log(city);
 
 
 
-
 // Important const Interview Question
 const user = {
-    name: "Abhishek"
+    name : "Abhishek"
 };
+
 
 user.name = "Rahul";
 
 console.log(user);
 
 // Output:
+
 
 {
   name: "Rahul"
@@ -395,6 +405,8 @@ console.log(user);
 // const prevents changing the reference.
 
 // It does not make the object immutable.
+
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Consider:
 
@@ -493,6 +505,10 @@ arr = [4, 5, 6];
 
 // Because the reference changes.
 
+
+
+
+
 // How to make an object truly immutable
 
 // Use Object.freeze():
@@ -540,13 +556,13 @@ arr = [4, 5, 6];
 // Hoisting means JavaScript moves declarations to the top of their scope before execution.
 
 // var Hoisting
-// console.log(a);
+// console.log(a);//
 
 // var a = 10;
 
 // JavaScript internally treats it like:
 
-// var a;
+// var a;//
 
 // console.log(a);
 
@@ -558,7 +574,7 @@ arr = [4, 5, 6];
 // let Hoisting
 // console.log(a);
 
-// let a = 10;
+// let a = 10;tdz
 
 // Output:
 
@@ -589,11 +605,11 @@ arr = [4, 5, 6];
 
 // console.log(age);
 
-// let age = 20;
+// let age = 20;initialized
 
 // JavaScript knows age exists.
 
-// But it is not initialized yet.
+// But it is not  yet.
 
 // Therefore:
 
@@ -608,25 +624,29 @@ arr = [4, 5, 6];
 
 //     // TDZ Ends
 // }
+
+
 // Function Hoisting
 
 // Functions are fully hoisted.
 
-// greet();
+greet();
 
-// function greet(){
-//     console.log("Hello");
-// }
+function greet(){
+    console.log("Hello");
+}
 
 // Output:
 
-// Hello
-// Function Expression Hoisting
-// greet();
+Hello
 
-// var greet = function(){
-//     console.log("Hello");
-// };
+
+// Function Expression Hoisting
+greet();
+
+var greet = function(){
+    console.log("Hello");
+};
 
 // Output:
 
@@ -640,15 +660,22 @@ arr = [4, 5, 6];
 
 // greet();
 
-// greet = function(){
-//     console.log("Hello");
-// };
+greet = function(){
+    console.log("Hello");
+};
 
 // At the time of calling:
 
-// greet === undefined
+
+
+
+
+greet === undefined
 // Interview Questions
 // Q1
+
+
+
 // console.log(a);
 
 // var a = 10;
@@ -665,11 +692,15 @@ arr = [4, 5, 6];
 
 // ReferenceError
 // Q3
-// if(true){
-//     var x = 10;
-// }
+if(true){
+    var x = 10;
+}
 
-// console.log(x);
+console.log(x);
+
+
+
+
 
 // Output?
 
@@ -685,11 +716,11 @@ arr = [4, 5, 6];
 
 // ReferenceError
 // Q5
-// sayHello();
+sayHello();
 
-// function sayHello(){
-//     console.log("Hello");
-// }
+function sayHello(){
+    console.log("Hello");
+}
 
 // Output?
 
@@ -712,4 +743,5 @@ arr = [4, 5, 6];
 
 // ✅ Variables are hoisted, but initialization is not
 
-// These concepts are extremely important because they appear everywhere in closures, async JavaScript, React, Node.js, and interview questions.
+// These concepts are extremely important because they appear everywhere in closures,
+//  async JavaScript, React, Node.js, and interview questions.

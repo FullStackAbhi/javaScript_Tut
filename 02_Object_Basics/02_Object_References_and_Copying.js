@@ -1,5 +1,7 @@
 // Object references and copying
-// One of the fundamental differences of objects versus primitives is that objects are stored and copied “by reference”, whereas primitive values: strings, numbers, booleans, etc – are always copied “as a whole value”.
+
+// One of the fundamental differences of objects versus primitives is that objects are stored and copied “by reference”,
+//  whereas primitive values: strings, numbers, booleans, etc – are always copied “as a whole value”.
 
 // That’s easy to understand if we look a bit under the hood of what happens when we copy a value.
 
@@ -84,14 +86,24 @@ const user = {
   name: "John"
 };
 
+
 user.name = "Pete"; // (*)
 
+
 alert(user.name); // Pete
-// It might seem that the line (*) would cause an error, but it does not. The value of user is constant, it must always reference the same object, but properties of that object are free to change.
+// It might seem that the line (*) would cause an error,
+
+//  but it does not. The value of user is constant, 
+// it must always reference the same object, but properties of that object are free to change.
 
 // In other words, the const user gives an error only if we try to set user=... as a whole.
 
-// That said, if we really need to make constant object properties, it’s also possible, but using totally different methods. We’ll mention that in the chapter Property flags and descriptors.
+// That said, if we really need to make constant object properties, it’s also possible,
+//  but using totally different methods. We’ll mention that in the chapter Property flags and descriptors.
+
+
+
+
 
 // Cloning and merging, Object.assign
 // So, copying an object variable creates one more reference to the same object.
@@ -102,9 +114,16 @@ alert(user.name); // Pete
 
 // Like this:
 
-let user = {
+
+let user1 = {
+  name: "Jhn",
+  age: 323
+  
+};
+let user2 = {
   name: "John",
-  age: 30
+  age: 22
+  
 };
 
 let clone = {}; // the new empty object
@@ -121,6 +140,7 @@ alert( user.name ); // still John in the original object
 // We can also use the method Object.assign.
 
 // The syntax is:
+
 
 Object.assign(dest, ...sources)
 // The first argument dest is a target object.
@@ -152,7 +172,11 @@ alert(user.name); // now user = { name: "Pete" }
 
 let user = {
   name: "John",
-  age: 30
+  age: 30,
+  name : {
+
+
+  }
 };
 
 let clone = Object.assign({}, user);
@@ -161,7 +185,8 @@ alert(clone.name); // John
 alert(clone.age); // 30
 // Here it copies all properties of user into the empty object and returns it.
 
-// There are also other methods of cloning an object, e.g. using the spread syntax clone = {...user}, covered later in the tutorial.
+// There are also other methods of cloning an object, 
+// e.g. using the spread syntax clone = {...user}, covered later in the tutorial.
 
 // Nested cloning
 // Until now we assumed that all properties of user are primitive. But properties can be references to other objects.
@@ -177,7 +202,8 @@ let user = {
 };
 
 alert( user.sizes.height ); // 182
-// Now it’s not enough to copy clone.sizes = user.sizes, because user.sizes is an object, and will be copied by reference, so clone and user will share the same sizes:
+// Now it’s not enough to copy clone.sizes = user.sizes, 
+// because user.sizes is an object, and will be copied by reference, so clone and user will share the same sizes:
 
 let user = {
   name: "John",
@@ -218,18 +244,31 @@ alert( user.sizes === clone.sizes ); // false, different objects
 // alert(clone.sizes.width); // 50, not related
 // The structuredClone method can clone most data types, such as objects, arrays, primitive values.
 
-// It also supports circular references, when an object property references the object itself (directly or via a chain or references).
+// It also supports circular references,
+//  when an object property references the object itself (directly or via a chain or references).
 
 // For instance:
 
-let user = {};
+let user = {
+  me: user
+};
+
+
 // // let's create a circular reference:
 // // user.me references the user itself
 user.me = user;
 
 let clone = structuredClone(user);
+
+
 alert(clone.me === clone); // true
+
+
 // As you can see, clone.me references the clone, not the user! So the circular reference was cloned correctly as well.
+
+
+
+
 
 // Although, there are cases when structuredClone fails.
 
@@ -239,10 +278,15 @@ alert(clone.me === clone); // true
 structuredClone({
   f: function() {}
 });
+
 // Function properties aren’t supported.
 
 // To handle such complex cases we may need to use a combination of cloning methods, write custom code or, 
-// to not reinvent the wheel, take an existing implementation, for instance _.cloneDeep(obj) from the JavaScript library lodash.
+// to not reinvent the wheel,
+//  take an existing implementation, for instance _.cloneDeep(obj) from the JavaScript library lodash.
+
+
+
 
 // Summary
 // Objects are assigned and copied by reference. In other words, a variable 
