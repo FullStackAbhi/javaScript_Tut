@@ -9,6 +9,17 @@ let user = {
     name: "Abhishek"
 };
 
+
+
+user = null;
+
+
+
+
+
+
+
+
 // Memory now looks like:
 
 // RAM
@@ -31,6 +42,7 @@ let user = {
 // Delete it
 // ↓
 // Free RAM
+
 // The Most Important Concept: Reachability
 
 // JavaScript doesn't ask:
@@ -97,7 +109,7 @@ let user = {
     name: "John"
 };
 
-// user = null;
+user = null;
 
 // Memory becomes:
 
@@ -128,9 +140,19 @@ let user = {
     name: "John"
 };
 
+
+
 let admin = user;
 
 user = null;
+
+
+
+
+
+
+
+
 
 // Students often think object will be deleted.
 
@@ -299,6 +321,7 @@ family = null;
 // But if nobody can reach them from a root:
 
 // Entire island is deleted
+
 // Mark and Sweep Algorithm
 
 // Modern JS engines use:
@@ -441,4 +464,4 @@ user = null;
 // "JavaScript uses a mark-and-sweep garbage collection algorithm.
 //  Objects remain in memory as long as they are reachable from root references such as global variables, 
 // local variables in the call stack, or currently executing functions.
-//  Unreachable objects are automatically removed by the garbage collector."
+//  Unreachable objects are automatically removed by the garbage collector(GC)."

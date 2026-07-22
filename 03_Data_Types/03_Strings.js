@@ -57,7 +57,7 @@ alert(guestList); // a multiline list of guests, same as above
 let str1 = "Hello\nWorld"; // two lines using a "newline symbol"
 
 // // two lines using a normal newline and backticks
-let str2 = `Hello
+let str2 = `Hello 
 World`;
 
 alert(str1 == str2); // true
@@ -65,7 +65,9 @@ alert(str1 == str2); // true
 
 // Character	Description
 // \n	New line
-// \r	In Windows text files a combination of two characters \r\n represents a new break, while on non-Windows OS it’s just \n. That’s for historical reasons, most Windows software also understands \n.
+// \r	In Windows text files a combination of two characters \r\n represents a new break,
+//  while on non-Windows OS it’s just \n. That’s for historical reasons, most Windows software also understands \n.
+
 // \', \", \`	Quotes
 // \\	Backslash
 // \t	Tab
@@ -90,7 +92,7 @@ alert( "I'm the Walrus!" );
 // String length
 // The length property has the string length:
 
-alert( `My\n`.length ); // 
+alert( `My\n`.length ); // 3
 
 // Note that \n is a single “special” character, so the length is indeed 3.
 
@@ -108,14 +110,15 @@ alert( `My\n`.length ); //
 let str = `Hello`;
 
 // // the first character
-alert( str[0] ); // 
+alert( str[0] ); // H
 alert( str.at(0) ); //
 
 // // the last character
-alert( str[str.length - 1] ); 
-alert( str.at(-1) );
+alert( str[str.length - 1] ); //o
+alert( str.at(-1) );//o
 
-// As you can see, the .at(pos) method has a benefit of allowing negative position. If pos is negative, then it’s counted from the end of the string.
+// As you can see, the .at(pos) method has a benefit of allowing negative position.
+//  If pos is negative, then it’s counted from the end of the string.
 
 // So .at(-1) means the last character, and .at(-2) is the one before it, etc.
 
@@ -127,9 +130,15 @@ alert( str[-2] ); //
 alert( str.at(-2) ); // 
 // We can also iterate over characters using for..of:
 
+
+
 for (let char of "Hello") {
   alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
 }
+
+
+
+
 
 // Strings are immutable
 // Strings can’t be changed in JavaScript. It is impossible to change a character.
@@ -153,6 +162,7 @@ alert( str ); // hi
 // In the following sections we’ll see more examples of this.
 
 // Changing the case
+
 // Methods toLowerCase() and toUpperCase() change the case:
 
 alert( 'Interface'.toUpperCase() ); // 
@@ -160,8 +170,12 @@ alert( 'Interface'.toLowerCase() ); //
 
 // Or, if we want a single character lowercased:
 
-alert( 'Interface'[0].toLowerCase() ); // 
-// Searching for a substring
+alert( 'Interface'[0].toLowerCase() ); // i
+
+
+
+// Searching for a substring 
+
 // There are multiple ways to look for a substring within a string.
 
 str.indexOf
@@ -177,7 +191,7 @@ let str = 'Widget with id';
 alert( str.indexOf('Widget') ); // 
 alert( str.indexOf('widget') ); // 
 
-alert( str.indexOf("id") ); // 1, 
+alert( str.indexOf("id") ); // , 
 
 // The optional second parameter allows us to start searching from a given position.
 
@@ -185,13 +199,22 @@ alert( str.indexOf("id") ); // 1,
 
 let str = 'Widget with id';
 
-alert( str.indexOf('id', 2) ) // 
+alert( str.indexOf('id', 2) ) // 12
+
 // If we’re interested in all occurrences, we can run indexOf in a loop. 
 // Every new call is made with the position after the previous match:
 
 let str = 'As sly as a fox, as strong as an ox';
 
 let target = 'as'; // let's look for it
+
+
+
+
+
+
+
+
 
 let pos = 0;
 while (true) {
@@ -204,108 +227,157 @@ while (true) {
 
 // The same algorithm can be layed out shorter:
 
-// let str = "As sly as a fox, as strong as an ox";
-// let target = "as";
+let str = "As sly as a fox, as strong as an ox";
+let target = "as";
 
-// let pos = -1;
-// while ((pos = str.indexOf(target, pos + 1)) != -1) {
-//   alert( pos );
-// }
-// str.lastIndexOf(substr, position)
-// There is also a similar method str.lastIndexOf(substr, position) that searches from the end of a string to its beginning.
+let pos = -1;
+
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}
+
+
+
+
+str.lastIndexOf(substr, position)
+// There is also a similar method str.lastIndexOf(substr, position) 
+// that searches from the end of a string to its beginning.
 
 // It would list the occurrences in the reverse order.
 
 // There is a slight inconvenience with indexOf in the if test. We can’t put it in the if like this:
 
-// let str = "Widget with id";
+let str = "Widget with id";
 
-// if (str.indexOf("Widget")) {
-//     alert("We found it"); // doesn't work!
-// }
-// The alert in the example above doesn’t show because str.indexOf("Widget") returns 0 (meaning that it found the match at the starting position). Right, but if considers 0 to be false.
+if (str.indexOf("Widget") !== -1) {
+    alert("We found it"); // doesn't work!
+}
+// The alert in the example above doesn’t show because str.indexOf("Widget")
+//  returns 0 (meaning that it found the match at the starting position). Right, but if considers 0 to be false.
 
 // So, we should actually check for -1, like this:
 
-// let str = "Widget with id";
+let str = "Widget with id";
 
-// if (str.indexOf("Widget") != -1) {
-//     alert("We found it"); // works now!
-// }
-// includes, startsWith, endsWith
-// The more modern method str.includes(substr, pos) returns true/false depending on whether str contains substr within.
+if (str.indexOf("Widget") != -1) {
+    alert("We found it"); // works now!
+}
+
+
+
+includes, startsWith, endsWith
+// The more modern method str.includes(substr, pos) 
+// returns true/false depending on whether str contains substr within.
 
 // It’s the right choice if we need to test for the match, but don’t need its position:
 
-// alert( "Widget with id".includes("Widget") ); // true
+alert( "Widget with id".includes("Widget") ); // true
 
-// alert( "Hello".includes("Bye") ); // false
+alert( "Hello".includes("Bye") ); // false
 // The optional second argument of str.includes is the position to start searching from:
 
-// alert( "Widget".includes("id") ); // true
-// alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
 // The methods str.startsWith and str.endsWith do exactly what they say:
 
-// alert( "Widget".startsWith("Wid") ); // true, "Widget" starts with "Wid"
-// alert( "Widget".endsWith("get") ); // true, "Widget" ends with "get"
-// Getting a substring
+alert( "Widget".startsWith("Wid") ); // true, "Widget" starts with "Wid"
+alert( "Widget".endsWith("get") ); // true, "Widget" ends with "get"
+
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.  Getting a substring
 // There are 3 methods in JavaScript to get a substring: substring, substr and slice.
 
 // str.slice(start [, end])
+
 // Returns the part of the string from start to (but not including) end.
 
 // For instance:
 
-// let str = "stringify";
-// alert( str.slice(0, 5) ); // 'strin', the substring from 0 to 5 (not including 5)
-// alert( str.slice(0, 1) ); // 's', from 0 to 1, but not including 1, so only character at 0
+let str = "stringify";
+
+
+
+alert( str.slice(0, 5) );//0to 4//strin
+str.slice(5 , 0)
+str.substring(5,0)
+
+
+
+alert( str.slice(0, 1) ); //s
+
+
+
+
+
+
+
 // If there is no second argument, then slice goes till the end of the string:
 
-// let str = "stringify";
-// alert( str.slice(2) ); // 'ringify', from the 2nd position till the end
-// Negative values for start/end are also possible. They mean the position is counted from the string end:
+let str = "stringify";
+alert( str.slice(2) ); // 'ringify', from the 2nd position till the end
+// Negative values for start/end are also possible. 
+// They mean the position is counted from the string end:
 
-// let str = "stringify";
+let str = "stringify";
 
 // // start at the 4th position from the right, end at the 1st from the right
-// alert( str.slice(-4, -1) ); // 'gif'
-// str.substring(start [, end])
+alert( str.slice(-4, -1) ); // 'gif'
+
+
+
+
+
+str.substring(start , end)
+
+
+
 // Returns the part of the string between start and end (not including end).
 
-// This is almost the same as slice, but it allows start to be greater than end (in this case it simply swaps start and end values).
+// This is almost the same as slice,
+//  but it allows start to be greater than end (in this case it simply swaps start and end values).
 
 // For instance:
 
-// let str = "stringify";
+let str = "stringify";
 
 // // these are same for substring
-// alert( str.substring(2, 6) ); // "ring"
-// alert( str.substring(6, 2) ); // "ring"
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"
 
 // // ...but not for slice:
-// alert( str.slice(2, 6) ); // "ring" (the same)
-// alert( str.slice(6, 2) ); // "" (an empty string)
+alert( str.slice(2, 6) ); // "ring" (the same)
+alert( str.slice(6, 2) ); // "" (an empty string)
 // Negative arguments are (unlike slice) not supported, they are treated as 0.
+
+
+
 
 // str.substr(start [, length])
 // Returns the part of the string from start, with the given length.
 
-// In contrast with the previous methods, this one allows us to specify the length instead of the ending position:
+// In contrast with the previous methods, 
+// this one allows us to specify the length instead of the ending position:
 
-// let str = "stringify";
-// alert( str.substr(2, 4) ); // 'ring', from the 2nd position get 4 characters
+let str = "stringify";
+
+
+alert( str.substr(2, 4) ); // 'ring', from the 2nd position get 4 characters
 // The first argument may be negative, to count from the end:
 
-// let str = "stringify";
-// alert( str.substr(-4, 2) ); // 'gi', from the 4th position get 2 characters
+let str = "stringify";
+
+alert( str.substr(-4, 2) ); // 'gi', from the 4th position get 2 characters
 // This method resides in the Annex B of the language specification. It means that only browser-hosted Javascript engines should support it, and it’s not recommended to use it. In practice, it’s supported everywhere.
 
 // Let’s recap these methods to avoid any confusion:
 
 // method	selects…	negatives
-// slice(start, end)	from start to end (not including end)	allows negatives
-// substring(start, end)	between start and end (not including end)	negative values mean 0
-// substr(start, length)	from start get length characters	allows negative start
+slice(start, end)	//from start to end (not including end)	allows negatives
+substring(start, end)//	between start and end (not including end)	negative values mean 0
+substr(start, length)	//from start get length characters	allows negative start
 // Which one to choose?
 // All of them can do the job. Formally, substr has a minor drawback: it is described not in the core JavaScript specification, but in Annex B, which covers browser-only features that exist mainly for historical reasons. So, non-browser environments may fail to support it. But in practice it works everywhere.
 
@@ -320,49 +392,20 @@ while (true) {
 
 // A lowercase letter is always greater than the uppercase:
 
-// alert( 'a' > 'Z' ); // true
+alert( 'a' > 'Z' ); // true
 // Letters with diacritical marks are “out of order”:
 
-// alert( 'Österreich' > 'Zealand' ); // true
-// This may lead to strange results if we sort these country names. Usually people would expect Zealand to come after Österreich in the list.
+alert( 'Österreich' > 'Zealand' ); // true
 
-// To understand what happens, we should be aware that strings in Javascript are encoded using UTF-16. That is: each character has a corresponding numeric code.
-
-// There are special methods that allow to get the character for the code and back:
-
-// str.codePointAt(pos)
-// Returns a decimal number representing the code for the character at position pos:
-
-// // different case letters have different codes
-// alert( "Z".codePointAt(0) ); // 90
-// alert( "z".codePointAt(0) ); // 122
-// alert( "z".codePointAt(0).toString(16) ); // 7a (if we need a hexadecimal value)
-// String.fromCodePoint(code)
-// Creates a character by its numeric code
-
-// alert( String.fromCodePoint(90) ); // Z
-// alert( String.fromCodePoint(0x5a) ); // Z (we can also use a hex value as an argument)
-// Now let’s see the characters with codes 65..220 (the latin alphabet and a little bit extra) by making a string of them:
-
-// let str = '';
-
-// for (let i = 65; i <= 220; i++) {
-//   str += String.fromCodePoint(i);
-// }
-// alert( str );
-// // Output:
-// // ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-// // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
-// See? Capital characters go first, then a few special ones, then lowercase characters, and Ö near the end of the output.
-
-// Now it becomes obvious why a > Z.
+// 
 
 // The characters are compared by their numeric code. The greater code means that the character is greater. The code for a (97) is greater than the code for Z (90).
 
 // All lowercase letters go after uppercase letters because their codes are greater.
 // Some letters like Ö stand apart from the main alphabet. Here, its code is greater than anything from a to z.
 // Correct comparisons
-// The “right” algorithm to do string comparisons is more complex than it may seem, because alphabets are different for different languages.
+// The “right” algorithm to do string comparisons is more complex than it may seem, 
+// because alphabets are different for different languages.
 
 // So, the browser needs to know the language to compare.
 
@@ -370,7 +413,8 @@ while (true) {
 
 // It provides a special method to compare strings in different languages, following their rules.
 
-// The call str.localeCompare(str2) returns an integer indicating whether str is less, equal or greater than str2 according to the language rules:
+// The call str.localeCompare(str2) returns an integer indicating whether str is less,
+//  equal or greater than str2 according to the language rules:
 
 // Returns a negative number if str is less than str2.
 // Returns a positive number if str is greater than str2.
@@ -378,7 +422,9 @@ while (true) {
 // For instance:
 
 // alert( 'Österreich'.localeCompare('Zealand') ); // -1
-// This method actually has two additional arguments specified in the documentation, which allows it to specify the language (by default taken from the environment, letter order depends on the language) and setup additional rules like case sensitivity or should "a" and "á" be treated as the same etc.
+// This method actually has two additional arguments specified in the documentation, 
+// which allows it to specify the language (by default taken from the environment, letter order depends on the language)
+//  and setup additional rules like case sensitivity or should "a" and "á" be treated as the same etc.
 
 // Summary
 // There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions ${…}.
@@ -393,7 +439,74 @@ while (true) {
 // str.trim() – removes (“trims”) spaces from the beginning and end of the string.
 // str.repeat(n) – repeats the string n times.
 // …and more to be found in the manual.
-// Strings also have methods for doing search/replace with regular expressions. But that’s big topic, so it’s explained in a separate tutorial section Regular expressions.
+// Strings also have methods for doing search/replace with regular expressions.
+//  But that’s big topic, so it’s explained in a separate tutorial section Regular expressions.
 
 // Also, as of now it’s important to know that strings are based on Unicode encoding, and hence there’re issues with comparisons. There’s more about Unicode in the chapter Unicode, String internals.
 
+// Assignment 
+// ⁡⁢⁢⁢Uppercase the first character
+// importance: 5
+// Write a function ucFirst(str) that returns the string str with the uppercased first character, for instance:
+
+// ucFirst("john") == "John";
+
+// solution⁡
+
+
+
+
+
+
+
+
+
+
+
+
+// ⁡⁢⁢⁢Write a function checkSpam(str) that returns true if str contains 'divya' or ‘abhishek’, otherwise false.
+
+// The function must be case-insensitive:
+
+// checkSpam('buy Abhsiehk now') == true
+// checkSpam('free DiVya') == true
+// checkSpam("innocent rabbit") == false
+// Open a sandbox with tests.
+// ⁡
+
+
+
+
+
+
+// Truncate the text
+// importance: 5
+// Create a function truncate(str, maxlength) that checks the length of the str and, if it exceeds maxlength – replaces the end of str with the ellipsis character "…", to make its length equal to maxlength.
+
+// The result of the function should be the truncated (if needed) string.
+
+// For instance:
+
+// truncate("What I'd like to tell on this topic is:", 20) == "What I'd like to te…"
+
+// truncate("Hi everyone!", 20) == "Hi everyone!"
+// Open a sandbox with tests.
+
+// 
+
+
+
+
+
+
+
+// Extract the money
+// importance: 4
+// We have a cost in the form "$120". That is: the dollar sign goes first, and then the number.
+
+// Create a function extractCurrencyValue(str) that would
+//  extract the numeric value from such string and return it.
+
+// The example:
+
+// alert( extractCurrencyValue('$120') === 120 ); // true

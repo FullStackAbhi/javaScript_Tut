@@ -3,8 +3,12 @@
 // Before Symbols, object keys could only be strings.
 
 const user = {
+    id : 555,
     name: "Abhishek"
 };
+
+
+
 
 // console.log(user.name);
 
@@ -44,9 +48,8 @@ user.id = 999;
 
 // Create one:
 
-// const id = Symbol();
+const id = Symbol();
 
-// or
 
 const id = Symbol("id");
 
@@ -168,6 +171,7 @@ for(let key in user){
 
 // for...in ignores Symbols
 Object.keys()
+
 console.log(
     Object.keys(user)
 );
@@ -199,13 +203,19 @@ user[secret] = "Admin";
 
 
 // Global symbols
-// As we’ve seen, usually all symbols are different, even if they have the same name. But sometimes we want same-named symbols to be same entities. For instance, different parts of our application want to access symbol "id" meaning exactly the same property.
+// As we’ve seen, usually all symbols are different, even if they have the same name.
+//  But sometimes we want same-named symbols to be same entities. F
+// or instance, different parts of our application want to access symbol "id" meaning exactly the same property.
 
-// To achieve that, there exists a global symbol registry. We can create symbols in it and access them later, and it guarantees that repeated accesses by the same name return exactly the same symbol.
+// To achieve that, there exists a global symbol registry. 
+// We can create symbols in it and access them later, 
+// and it guarantees that repeated accesses by the same name return exactly the same symbol.
 
 // In order to read (create if absent) a symbol from the registry, use Symbol.for(key).
 
-// That call checks the global registry, and if there’s a symbol described as key, then returns it, otherwise creates a new symbol Symbol(key) and stores it in the registry by the given key.
+// That call checks the global registry,
+//  and if there’s a symbol described as key, then returns it,
+//  otherwise creates a new symbol Symbol(key) and stores it in the registry by the given key.
 
 // For instance:
 
@@ -217,7 +227,8 @@ let idAgain = Symbol.for("id");
 
 // // the same symbol
 alert( id === idAgain ); // true
-// Symbols inside the registry are called global symbols. If we want an application-wide symbol, accessible everywhere in the code – that’s what they are for.
+// Symbols inside the registry are called global symbols.
+//  If we want an application-wide symbol, accessible everywhere in the code – that’s what they are for.
 
 
 
@@ -230,6 +241,7 @@ alert( id === idAgain ); // true
 
 
 // Interview Question
+
 // Output?
 const id1 = Symbol("id");
 const id2 = Symbol("id");
@@ -237,6 +249,7 @@ const id2 = Symbol("id");
 console.log(id1 === id2);
 
 // Output:
+
 
 // false
 
@@ -277,22 +290,24 @@ const b = Symbol("id");
 
 // Output:
 
-// a === b
+a === b
 // false
 // Symbol.for()
-// const a = Symbol.for("id");
-// const b = Symbol.for("id");
+const a = Symbol.for("id");
+const b = Symbol.for("id");
 
 // Output:
 
 // a === b
 // true
 // Symbol Description
-const id = Symbol("userId");
+const name= Symbol("userId");
 
 // Get description:
 
-console.log(id.description);
+console.log(name.description);
+
+
 
 // Output:
 

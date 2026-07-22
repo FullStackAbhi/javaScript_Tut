@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>DOM Tree</title>
+
+</head>
+
+<body>
+
+  <h1>Hello</h1>
+
+  <p>Paragraph</p>
+
+  <button>Click Me</button>
+  <table id="table">
+    <tr>
+      <td>Your age:</td>
+      <td>
+        <label>
+          <input type="radio" name="age" value="young" checked> less than 18
+        </label>
+        <label>
+          <input type="radio" name="age" value="mature"> from 18 to 50
+        </label>
+        <label>
+          <input type="radio" name="age" value="senior"> more than 60
+        </label>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    let oneul = document.getElementById("1stul").lastChild
+
+    let elements = document.querySelectorAll('ul > li:last-child');
+
+    for (let elem of elements) {
+      console.log(elem); // "test", "passed"
+    }
+
+
+  </script>
+
+</body>
+
+</html>

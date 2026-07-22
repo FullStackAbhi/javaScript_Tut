@@ -1,14 +1,27 @@
  // The Problem
 
+
+
+
+
+
+
+
+
+
+
+
+
  // Imagine:
 
 // const user = {
 //     name: "Abhishek"
 // };
 
- // Now:
 
-// // // console.log(user.address.street);
+//  // Now:
+
+//  console.log(user.address.street);
 
  // Output:
 
@@ -18,11 +31,7 @@
 
 // Because:
 
- // user.address
-
- // is:
-
- // undefined
+ // user.address is:undefined
 
  // Then JavaScript tries:
 
@@ -40,11 +49,11 @@
 
 // // // // or
 
-// // // console.log(
-// // //     user.address
-// // //         ? user.address.street
-// // //         : undefined
-// // // );
+ console.log(
+     user.address
+         ? user.address.street
+         : undefined
+ );
 
 // // // // Ugly.
 
@@ -69,7 +78,7 @@
 
 // // // // Example:
 
-// // // user.address?.street
+ user.address?.street
 
 // // // // JavaScript asks:
 
@@ -195,7 +204,7 @@
 // // // // Suppose:
 
 // // // const user = {
-// // //     marks: [90,95,100]
+// // //     marks: []
 // // // };
 
 // // // // Access:
@@ -236,7 +245,13 @@
 
 // // // // Very Important Rule
 // // // // Only protects the left side
+
 // // // // user?.address.street
+
+
+
+
+
 
 // // // // Safe only for:
 
@@ -254,6 +269,12 @@
 // // // console.log(
 // // //     user?.address.street
 // // // );
+
+
+
+
+
+
 
 // // // // Output:
 
@@ -281,6 +302,8 @@
 // // // // Wrong:
 
 // // // user?.name = "Abhishek";
+user.name = "Abhishek"
+user[name] = "Abhishek"
 
 // // // // Output:
 
@@ -297,6 +320,12 @@
 
 // // // // console.log(user.address?.city);
 
+
+
+
+
+
+
 // // // // Answer:
 
 // // // // undefined
@@ -311,13 +340,26 @@
 // // // // Answer:
 
 // // // // undefined
+
+
+
 // // // // Q3
 
 // // // // Output?
 
 // // // const user = {};
 
+
 // // // user.sayHi?.();
+
+
+
+
+
+
+
+
+
 
 // // // // Answer:
 
@@ -327,7 +369,9 @@
 
 // // // // One-Line Interview Answer
 
-// // // // Optional Chaining (?.) is used to safely access properties, methods, or array elements of an object that may be null or undefined. Instead of throwing an error, it returns undefined and stops execution of that property chain.
+// // // // Optional Chaining (?.) 
+// is used to safely access properties, methods, or array elements of an object that may be null or undefined.
+// Instead of throwing an error, it returns undefined and stops execution of that property chain.
 
 // // // // For MERN interviews, remember these three forms:
 
@@ -374,6 +418,9 @@
 // };
 
 
+// user[name]
+
+
 // for(let key in Object) {
-//     console.log(key)
+//     console.log(key , user[key])// 
 // }

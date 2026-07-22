@@ -13,9 +13,9 @@ const user = {
 
 // Now you want another object with the same values.
 
-// Many beginners do:
+//1st method
 
-// const copy = user;
+const copy = user;
 
 // Looks like a copy, right?
 
@@ -82,7 +82,11 @@ console.log(user === copy);
 // Because:
 
 // Same memory address
-// Shallow Copy
+
+
+
+
+//? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Shallow Copy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // A shallow copy creates:
 
@@ -136,6 +140,11 @@ console.log(user === copy);
 // false because they are Different objects.
 
 
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 // Problem With Shallow Copy
 
 // Consider:
@@ -153,6 +162,17 @@ const user = {
 const copy = {
     ...user
 };
+
+// console.log(copy)
+// copy.name = "divya"
+// console.log(user.name)
+
+
+
+
+
+
+
 
 // Looks copied.
 
@@ -209,11 +229,13 @@ console.log(user.address.city);
 // Definition Shallow Copy :  Copies only the first level ,Nested objects still share references.
 
 
-// Ways To Create Shallow Copy
+// >>>????????????????????? Ways To Create Shallow Copy >>>????????????????????????????????????
+
 // 1. Spread Operator
 const copy = {
     ...user
 };
+
 // 2. Object.assign()
 const copy =
     Object.assign({}, user);
@@ -242,6 +264,7 @@ const user = {
 // All References
 
 // Example
+
 const user = {
     name: "Abhishek",
 

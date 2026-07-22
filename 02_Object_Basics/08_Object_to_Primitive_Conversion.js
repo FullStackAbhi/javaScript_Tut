@@ -31,7 +31,11 @@ const user = {
     name: "Abhishek"
 };
 
-// console.log(user + 10);
+console.log(user + 10);
+
+
+
+
 
 // Question:
 
@@ -58,6 +62,7 @@ const user = {
 // Date
 // Map
 // Set
+
 
 // must be converted before arithmetic.
 
@@ -101,7 +106,7 @@ alert(user);
 // obj * 10;
 
 // Example:
-
+ 
 // let price = obj * 2;
 
 // JS asks:
@@ -112,7 +117,7 @@ alert(user);
 
 // Used mostly by:
 
-// obj + 5
+// obj + "5"
 
 // because:
 
@@ -135,7 +140,7 @@ alert(user);
 // JavaScript follows this order:
 
 // Modern Way
-// obj[Symbol.toPrimitive]()
+obj[Symbol.toPrimitive]()
 
 // Old Way
 // toString()
@@ -162,6 +167,7 @@ const user = {
 // Custom toString()
 const user = {
     name: "Abhishek",
+    age = 1000,
 
     toString() {
         return this.name;
@@ -311,7 +317,9 @@ const obj = {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Interview Question
 // Why?
-console.log({} + 1);
+
+
+console.log({} + 1);//[object Object] + 1 => [Object Object]1
 
 
 
@@ -392,7 +400,7 @@ console.log(user + " Tiwari");
 
 // ✅ valueOf() handles number conversion.
 
-// ✅ Symbol.toPrimitive is the modern way.
+// ✅ Symbol.⁡⁣⁢⁢toPrimitive ⁡is the modern way.
 
 // ✅ +, -, *, comparisons can trigger conversion.
 

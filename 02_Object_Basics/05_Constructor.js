@@ -21,6 +21,11 @@ const user3 = {
     isAdmin: false
 };
 
+
+
+
+
+
 // Notice:
 
 // Same structure
@@ -32,10 +37,15 @@ const user3 = {
 
 // Instead of creating objects manually:
 
+
+
 function User(name) {
     this.name = name;
     this.isAdmin = false;
 }
+
+
+
 
 // Now create users:
 
@@ -133,6 +143,12 @@ function User(name) {
 //     name:"Abhishek",
 //     isAdmin:false
 // }
+
+
+
+
+
+
 // Why Use Capital Letter?
 
 // Convention.
@@ -154,6 +170,19 @@ function User(name) {
 // Example with Method
 
 // Constructor can also create methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function User(name) {
 
@@ -245,6 +274,64 @@ function User(name){
 const user = new User("Abhishek");
 
 console.log(user);
+
+// user
+//  ↓
+// User.prototype
+//  ↓
+// Object.prototype
+//  ↓
+// null
+
+// user
+// │
+// ├── name: "Abhishek"
+// │
+// ▼
+// User.prototype
+// │
+// ├── constructor: User
+// │
+// ▼
+// Object.prototype
+// │
+// ├── hasOwnProperty()
+// ├── toString()
+// ├── valueOf()
+// ├── isPrototypeOf()
+// └── ...
+// │
+// ▼
+// null
+
+Run:
+
+// function User(name) {
+//     this.name = name;
+// }
+
+// const user = new User("Abhishek");
+
+// console.log(user.__proto__ === User.prototype);
+
+// Output:
+
+// true
+
+// And:
+
+// console.log(
+//     User.prototype.__proto__ === Object.prototype
+// );
+
+// console.log(
+//     Object.prototype.__proto__
+// );
+
+
+
+
+
 
 // Output:
 
